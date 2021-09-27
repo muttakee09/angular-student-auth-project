@@ -1,0 +1,29 @@
+<div>
+  <app-studentlist
+    *ngIf="pathFlag == 0"
+    (changePath)="changePath($event)"
+    [selectedStudent]="selectedStudent"
+    (setSelectedStudent)="setSelectedStudent($event)">
+  </app-studentlist>
+
+  <app-studentdetail
+    *ngIf="pathFlag == 1"
+    (changePath)="changePath($event)"
+    [selectedStudent]="selectedStudent"
+    (setSelectedStudent)="setSelectedStudent($event)">
+  </app-studentdetail>
+
+  <app-studentform
+    *ngIf="pathFlag == 2"
+    (changePath)="changePath($event)"
+    [selectedStudent]="selectedStudent"
+    (setSelectedStudent)="setSelectedStudent($event)">
+  </app-studentform>
+
+  <app-deletestudent
+    *ngIf="pathFlag == 3"
+    (changePath)="changePath($event)"
+    [selectedStudent]="selectedStudent"
+    (setSelectedStudent)="setSelectedStudent($event)">
+  </app-deletestudent>
+</div>

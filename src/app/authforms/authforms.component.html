@@ -1,0 +1,9 @@
+<app-login
+  *ngIf="authFlag === 0"
+  (changeFlag)="changeFlag($event)">
+</app-login>
+
+<app-signup
+  *ngIf="authFlag === 1"
+  (changeFlag)="changeFlag($event)">
+</app-signup>

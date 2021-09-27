@@ -1,0 +1,60 @@
+<div class="container-fluid">
+	<h4>Student details</h4>
+	<a (click)="returnToList()">Back to list</a>
+	<hr />
+	<div class="row">
+		<div class="col-md-8" style="border-right:1px solid #e2f2f8">
+			<dl class="dl-horizontal">
+				<dt>
+					Name
+				</dt>
+				<dd>
+					{{student?.StudentName}}
+				</dd>
+
+				<dt>
+					Age
+				</dt>
+				<dd>
+					{{student?.Age}}
+				</dd>
+
+				<dt>
+					Blood Group
+				</dt>
+				<dd>
+					{{getBloodGroup()}}
+				</dd>
+
+				<dt>
+					Gender
+				</dt>
+				<dd>
+					{{student?.Gender === 0 ? 'Male' : 'Female'}}
+				</dd>
+
+				<dt>
+					Main Course
+				</dt>
+				<dd>
+					{{student?.MainCourseName}}
+				</dd>
+
+				<dt>
+					Supplementary Course
+				</dt>
+				<dd>
+					{{student?.SupplementaryCourseName}}
+				</dd>
+			</dl>
+		</div>
+		<div class="col-md-4" style="height:100%; display:flex; flex-direction:column; justify-content:center; align-items:center">
+			<div>
+				<h3>User Image</h3>
+				<img *ngIf = "student?.Image" src="https://localhost:44318/Photos/{{student?.Image}}"
+					alt="{{student?.Image}}" width="150" class="img-responsive" />
+
+			</div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,78 @@
+<div class="container-fluid">
+  <h3>Enter Student Info</h3>
+  <a (click)="changePath.emit(0)">Back to list</a>
+  <form (ngSubmit)="onSubmit()" #studentForm="ngForm" style="width: 30vw;min-width: 400px">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control"
+             required
+             [(ngModel)]="studentName" name="studentName"
+             #name="ngModel">
+      <div [hidden]="name.valid || name.pristine"
+           class="alert alert-danger">
+        Name is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="studentAge">Age</label>
+      <input type="text" class="form-control"
+             required
+             [(ngModel)]="studentAge" name="studentAge"
+             #age="ngModel">
+      <div [hidden]="age.valid || age.pristine"
+           class="alert alert-danger">
+        Age is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-md-2">
+          Gender
+      </div>
+      <div class="col-md-5">
+          <label style="margin-right: 20px">
+              <input type="radio" name="gender" [(ngModel)]="gender" value="0">
+              Male
+            </label>
+            <label>
+              <input type="radio" name="gender" [(ngModel)]="gender" value="1">
+              Female
+            </label>
+      </div>
+  </div>
+
+    <div class="form-group">
+      <label for="bloodGroup">Blood Group</label>
+      <select name="bloodGroup" [(ngModel)]="bloodGroup" class="form-control">
+        <option *ngFor="let opt of bloodGroupItems" [value]="opt.id">{{opt.name}}</option>
+    </select>
+    </div>
+
+    <div class="form-group">
+      <label for="image">Image</label>
+      <input name="image" type="file" [(ngModel)]="image" class="form-control"
+        (change)="handleFileInput($event.target)"/>
+    </div>
+
+    <div class="form-group">
+      <label for="mainCourse">Main Course</label>
+      <select name="mainCourse" [(ngModel)]="mainCourse" class="form-control">
+        <option [value] = "0">Select one</option>
+        <option *ngFor="let course of courseList" [value]="course.Id">{{course.CourseName}}</option>
+    </select>
+    </div>
+
+    <div class="form-group">
+      <label for="supplementaryCourse">supplementary Course</label>
+      <select name="supplementaryCourse" [(ngModel)]="supplementaryCourse" class="form-control">
+        <option [value] = "0">Select one</option>
+        <option *ngFor="let course of courseList" [value]="course.Id">{{course.CourseName}}</option>
+    </select>
+    </div>
+
+    <div class="mt-3">
+      <button type="submit" class="btn btn-success">Submit</button>
+  </div>
+  </form>
+</div>
