@@ -9,7 +9,7 @@
     <div class="col-sm-7"></div>
     <div class="col">
       <button
-
+        *ngIf="role === 1"
         class='btn btn-primary' style="margin-right: 10px;" (click)='this.changePath.emit(2)'>
         Create new
       </button>
@@ -44,7 +44,7 @@
               {{item.Gender === 0 ? 'Male' : 'Female'}}
           </td>
           <td>
-              {{getBloodGroup(item.BloodGroup)}}
+              {{item.BloodGroup | bloodType}}
           </td>
           <td>
             <div>

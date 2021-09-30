@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { getBloodGroupFromId } from '../utillity/constant';
 import { StudentView } from '../utillity/StudentView';
 
 @Component({
@@ -23,9 +22,4 @@ export class StudentdetailComponent implements OnInit {
     this.setSelectedStudent.emit(null);
     this.changePath.emit(0);
   }
-
-  getBloodGroup(): string {
-    return getBloodGroupFromId(this.selectedStudent.BloodGroup);
-  }
-
 }

@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, startWith, switchMap } from 'rxjs/operators';
 import { StudentService } from '../services/student.service';
-import { getBloodGroupFromId } from '../utillity/constant';
 import { StudentView } from '../utillity/StudentView';
 
 @Component({
@@ -60,9 +59,5 @@ export class StudentlistComponent implements OnInit {
   logOut(): void  {
     localStorage.clear();
     this.router.navigateByUrl('/login');
-  }
-
-  getBloodGroup(id:number):string {
-    return getBloodGroupFromId(id);
   }
 }

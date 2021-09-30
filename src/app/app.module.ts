@@ -15,6 +15,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthformsComponent } from './authforms/authforms.component';
 import { StudentviewComponent } from './studentview/studentview.component';
 import { DeletestudentComponent } from './deletestudent/deletestudent.component';
+import { NavigationbarComponent } from './navigationbar/navigationbar.component';
+import { BloodTypePipe } from './blood-type.pipe';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { DeletestudentComponent } from './deletestudent/deletestudent.component'
     StudentdetailComponent,
     AuthformsComponent,
     StudentviewComponent,
-    DeletestudentComponent
+    DeletestudentComponent,
+    NavigationbarComponent,
+    BloodTypePipe
   ],
   imports: [
     BrowserModule,

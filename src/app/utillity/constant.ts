@@ -36,34 +36,3 @@ export const bloodGroupItems = [
       name: "O-"
   },
   ]
-
-export const getBloodGroupFromId = (id: number): string => {
-  let p = "";
-  switch (id) {
-    case 0:
-      p = "A+";
-      break;
-    case 1:
-      p = "B+";
-      break;
-    case 2:
-      p = "AB+";
-      break;
-    case 3:
-      p = "O+";
-      break;
-    case 4:
-      p = "A-";
-      break;
-    case 5:
-      p = "B-";
-      break;
-    case 6:
-      p = "AB-";
-      break;
-    case 7:
-      p = "O-";
-      break;
-    }
-    return p;
-  }
