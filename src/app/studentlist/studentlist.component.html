@@ -6,8 +6,8 @@
         [(ngModel)]="key"
          class="form-control" (input)="searchStudent(searchBox.value)" />
     </div>
-    <div class="col-sm-7"></div>
-    <div class="col">
+    <div class="col-sm-5"></div>
+    <div class="col" style="display: flex; justify-content: flex-end; margin-right: 5vw;">
       <button
         *ngIf="role === 1"
         class='btn btn-primary' style="margin-right: 10px;" (click)='this.changePath.emit(2)'>

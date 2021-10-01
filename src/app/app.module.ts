@@ -15,8 +15,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthformsComponent } from './authforms/authforms.component';
 import { StudentviewComponent } from './studentview/studentview.component';
 import { DeletestudentComponent } from './deletestudent/deletestudent.component';
-import { NavigationbarComponent } from './navigationbar/navigationbar.component';
+import { NavigationbarComponent } from './layouts/navigationbar/navigationbar.component';
 import { BloodTypePipe } from './blood-type.pipe';
+import { FooterComponent } from './layouts/footer/footer.component';
+import { FooterOnlyLayoutComponent } from './footeronlylayout/footeronlylayout.component';
+import { MainLayoutComponent } from './main-layout/main-layout.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AdminModule } from './admin/admin.module';
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 
 @NgModule({
   declarations: [
@@ -30,14 +36,21 @@ import { BloodTypePipe } from './blood-type.pipe';
     StudentviewComponent,
     DeletestudentComponent,
     NavigationbarComponent,
-    BloodTypePipe
+    BloodTypePipe,
+    FooterComponent,
+    FooterOnlyLayoutComponent,
+    MainLayoutComponent,
+    PageNotFoundComponent,
+    MainLayoutComponent,
+    UnauthorizedComponent
   ],
   imports: [
     BrowserModule,
     CommonModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AdminModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
