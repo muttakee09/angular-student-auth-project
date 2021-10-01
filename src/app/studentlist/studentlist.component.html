@@ -9,7 +9,7 @@
     <div class="col-sm-5"></div>
     <div class="col" style="display: flex; justify-content: flex-end; margin-right: 5vw;">
       <button
-        *ngIf="role === 1"
+        *appHighlighter="true"
         class='btn btn-primary' style="margin-right: 10px;" (click)='this.changePath.emit(2)'>
         Create new
       </button>
@@ -48,9 +48,9 @@
           </td>
           <td>
             <div>
-              <button *ngIf="role === 1" class='btn btn-success' style="margin-right: 10px;" (click)=toUpdatePage(item)>Update</button>
+              <button *appHighlighter="true" class='btn btn-success' style="margin-right: 10px;" (click)=toUpdatePage(item)>Update</button>
               <button class='btn btn-info' style="margin-right: 10px;" (click)=toDetailPage(item)>Details</button>
-              <button *ngIf="role === 1" class='btn btn-danger' (click)=toDeletePage(item)> Delete</button>
+              <button *appHighlighter="true" class='btn btn-danger' (click)=toDeletePage(item)> Delete</button>
             </div>
           </td>
       </tr>

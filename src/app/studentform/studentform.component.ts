@@ -1,5 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import { Observable } from 'rxjs';
 import { CourseService } from '../services/course.service';
+import { DialogService } from '../services/dialog.service';
 import { StudentService } from '../services/student.service';
 import { bloodGroupItems } from '../utillity/constant';
 import { Course } from '../utillity/Course';
@@ -10,7 +12,7 @@ import { StudentView } from '../utillity/StudentView';
   templateUrl: './studentform.component.html',
   styleUrls: ['./studentform.component.css']
 })
-export class StudentformComponent implements OnInit {
+export class StudentformComponent implements OnInit, OnChanges {
   @Input() selectedStudent: StudentView | null | undefined;
   @Output() changePath = new EventEmitter();
   @Output() setSelectedStudent = new EventEmitter<StudentView>();
@@ -25,7 +27,8 @@ export class StudentformComponent implements OnInit {
   supplementaryCourse: number = 0;
   courseList: Course[] = [];
 
-  constructor(private studentService: StudentService, private courseService: CourseService) { }
+  constructor(private studentService: StudentService,
+     private courseService: CourseService, private dialogService: DialogService) { }
 
   ngOnInit(): void {
     if (this.selectedStudent) {
@@ -42,10 +45,24 @@ export class StudentformComponent implements OnInit {
       courses => this.courseList = courses);
   }
 
+  ngOnChanges(): void {
+    console.log('damn');
+  }
+
   handleFileInput(target: any): void {
     if (target.files) {
       this.image = target.files.item(0);
     }
+  }
+
+  canDeactivate(): Observable<boolean> | boolean {
+    // Allow synchronous navigation (`true`) if no crisis or the crisis is unchanged
+    if (this.studentName && this.studentAge) {
+      return true;
+    }
+    // Otherwise ask the user with the dialog service and return its
+    // observable which resolves to true or false when the user decides
+    return this.dialogService.confirm('Discard changes?');
   }
 
   onSubmit(): void {

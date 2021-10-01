@@ -23,6 +23,7 @@ import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AdminModule } from './admin/admin.module';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
+import { HighlighterDirective } from './highlighter.directive';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
     MainLayoutComponent,
     PageNotFoundComponent,
     MainLayoutComponent,
-    UnauthorizedComponent
+    UnauthorizedComponent,
+    HighlighterDirective
   ],
   imports: [
     BrowserModule,
