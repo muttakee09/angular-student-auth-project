@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { StudentView } from '../utillity/StudentView';
 import { Student } from '../utillity/Student';
 import { baseUrl } from '../utillity/constant';
@@ -26,7 +26,6 @@ export class StudentService {
     return this.http.get<StudentView[]>(this.studentUrl + 'get/' + params)
       .pipe(
         tap(_ => console.log('fetched students')),
-        catchError(this.handleError<StudentView[]>('getStudents', []))
       );
   }
 
@@ -39,8 +38,7 @@ export class StudentService {
         tap(h => {
           const outcome = h ? `fetched` : `did not find`;
           console.log(`${outcome} hero id=${id}`);
-        }),
-        catchError(this.handleError<StudentView>(`getHero id=${id}`))
+        })
       );
   }
 
@@ -48,16 +46,14 @@ export class StudentService {
   getStudent(id: number): Observable<StudentView> {
     const url = `${this.studentUrl}/get/${id}`;
     return this.http.get<StudentView>(url).pipe(
-      tap(_ => console.log(`fetched hero id=${id}`)),
-      catchError(this.handleError<StudentView>(`getHero id=${id}`))
+      tap(_ => console.log(`fetched hero id=${id}`))
     );
   }
 
   /** POST: add a new hero to the server */
   addStudent(student: FormData): Observable<Student> {
     return this.http.post<Student>(this.studentUrl + 'post/', student, this.httpOptions).pipe(
-      tap((newHero: Student) => console.log(`added hero w/ id=${newHero?.Id}`)),
-      catchError(this.handleError<Student>('addHero'))
+      tap((newHero: Student) => console.log(`added hero w/ id=${newHero?.Id}`))
     );
   }
 
@@ -66,16 +62,14 @@ export class StudentService {
     const url = `${this.studentUrl}/delete/${id}`;
 
     return this.http.delete<Student>(url, this.httpOptions).pipe(
-      tap(_ => console.log(`deleted hero id=${id}`)),
-      catchError(this.handleError<Student>('deleteStudent'))
+      tap(_ => console.log(`deleted hero id=${id}`))
     );
   }
 
   /** PUT: update the hero on the server */
   updateStudent(id: number, student: FormData): Observable<any> {
     return this.http.put(`${this.studentUrl}/put/${id}`, student, this.httpOptions).pipe(
-      tap(_ => console.log(`updated hero id}`)),
-      catchError(this.handleError<any>('updateStudent'))
+      tap(_ => console.log(`updated hero id}`))
     );
   }
 

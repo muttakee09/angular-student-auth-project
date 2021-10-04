@@ -26,18 +26,16 @@ export class AuthService {
     const url = `${baseUrl}/api/auth/login`;
 
     return this.http.post(url, data, this.httpOptions).pipe(
-      tap<any>(),
-      catchError(this.handleError<any>('auth'))
-    );
+      tap<any>()
+      );
   }
 
   signup(data: FormData): Observable<any> {
     const url = `${baseUrl}/api/auth/signup`;
 
     return this.http.post(url, data, this.httpOptions).pipe(
-      tap<any>(),
-      catchError(this.handleError<any>('auth'))
-    );
+      tap<any>()
+      );
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

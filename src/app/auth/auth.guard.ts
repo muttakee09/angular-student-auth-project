@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, Router, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivateChild, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class AuthGuard implements CanActivateChild {
   constructor(private router: Router) {}
 
-  canActivate(
+  canActivateChild(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       const url: string = state.url;
@@ -16,9 +16,9 @@ export class AuthGuard implements CanActivate {
   }
 
   checkLogin(url:string): true|UrlTree {
-    if (localStorage.getItem('role') === '1') {
+    if (localStorage.getItem('token')) {
       return true;
     }
-    return this.router.parseUrl('/unauthorized');
+    return this.router.parseUrl('/login');
   }
 }

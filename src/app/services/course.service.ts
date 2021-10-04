@@ -21,17 +21,7 @@ export class CourseService {
   getCourses(): Observable<Course[]> {
     return this.http.get<Course[]>(this.courseUrl + 'get')
       .pipe(
-        tap(_ => console.log('fetched students')),
-        catchError(this.handleError<Course[]>('getStudents', []))
+        tap(_ => console.log('fetched students'))
       );
   }
-
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      console.error(error); // log to console instead
-      console.log(`${operation} failed: ${error.message}`);
-      return of(result as T);
-    };
-  }
-
 }

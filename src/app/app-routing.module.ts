@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminGuard } from './admin.guard';
+import { AuthGuard } from './auth/auth.guard';
 import { AuthformsComponent } from './authforms/authforms.component';
 import { CanDeactivateGuard } from './can-deactivate.guard';
 import { FooterOnlyLayoutComponent } from './footeronlylayout/footeronlylayout.component';
@@ -16,14 +18,15 @@ const routes: Routes = [
     ] },
   { path: '',
     component: MainLayoutComponent,
+    canActivateChild: [AuthGuard],
     children: [
-    { path: 'students', canDeactivate: [CanDeactivateGuard], component: StudentviewComponent},
+    { path: 'students', component: StudentviewComponent},
+    {
+      path: 'admins',
+      loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
+      canLoad: [AdminGuard]
+    },
   ]},
-  {
-    path: 'admins',
-    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
-    // canLoad: [AuthGuard]
-  },
   { path: 'unauthorized', component: UnauthorizedComponent},
   { path: '**', component: PageNotFoundComponent},
   { path: '', redirectTo: localStorage.getItem('token') ? 'students' : 'login', pathMatch: 'full' },

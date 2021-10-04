@@ -24,6 +24,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { AdminModule } from './admin/admin.module';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import { HighlighterDirective } from './highlighter.directive';
+import { HttpErrorInterceptor } from './helpers/http-error.interceptor';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { HighlighterDirective } from './highlighter.directive';
     AdminModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })
