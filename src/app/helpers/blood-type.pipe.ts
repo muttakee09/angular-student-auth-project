@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { bloodGroupItems } from './utillity/constant';
+import { bloodGroupItems } from '../utillity/constant';
 
 @Pipe({
   name: 'bloodType'

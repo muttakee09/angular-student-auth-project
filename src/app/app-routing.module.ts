@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminGuard } from './admin.guard';
-import { AuthGuard } from './auth/auth.guard';
+import { AdminGuard } from './/guards/admin.guard';
+import { AuthGuard } from './guards/auth.guard';
 import { AuthformsComponent } from './authforms/authforms.component';
-import { CanDeactivateGuard } from './can-deactivate.guard';
-import { FooterOnlyLayoutComponent } from './footeronlylayout/footeronlylayout.component';
-import { MainLayoutComponent } from './main-layout/main-layout.component';
+import { CanDeactivateGuard } from './guards/can-deactivate.guard';
+import { FooterOnlyLayoutComponent } from './layouts/footeronlylayout/footeronlylayout.component';
+import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { StudentviewComponent } from './studentview/studentview.component';
+import { StudentviewComponent } from './student/studentview/studentview.component';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 
 const routes: Routes = [

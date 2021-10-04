@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { StudentService } from '../services/student.service';
-import { StudentView } from '../utillity/StudentView';
+import { StudentService } from '../../services/student.service';
+import { StudentView } from '../../utillity/StudentView';
 
 @Component({
   selector: 'app-deletestudent',

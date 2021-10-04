@@ -1,8 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../services/auth.service';
-import { StudentService } from '../services/student.service';
-import { Student } from '../utillity/Student';
+import { AuthService } from '../../services/auth.service';
 
 interface response {
   token: string;

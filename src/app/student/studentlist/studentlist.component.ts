@@ -2,8 +2,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, startWith, switchMap } from 'rxjs/operators';
-import { StudentService } from '../services/student.service';
-import { StudentView } from '../utillity/StudentView';
+import { StudentService } from '../../services/student.service';
+import { StudentView } from '../../utillity/StudentView';
 
 @Component({
   selector: 'app-studentlist',

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { StudentView } from '../utillity/StudentView';
+import { StudentView } from '../../utillity/StudentView';
 
 @Component({
   selector: 'app-studentview',

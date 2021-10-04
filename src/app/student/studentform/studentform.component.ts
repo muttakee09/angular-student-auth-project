@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CourseService } from '../services/course.service';
-import { DialogService } from '../services/dialog.service';
-import { StudentService } from '../services/student.service';
-import { bloodGroupItems } from '../utillity/constant';
-import { Course } from '../utillity/Course';
-import { StudentView } from '../utillity/StudentView';
+import { CourseService } from '../../services/course.service';
+import { DialogService } from '../../services/dialog.service';
+import { StudentService } from '../../services/student.service';
+import { bloodGroupItems } from '../../utillity/constant';
+import { Course } from '../../utillity/Course';
+import { StudentView } from '../../utillity/StudentView';
 
 @Component({
   selector: 'app-studentform',
