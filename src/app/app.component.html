@@ -1,4 +1,9 @@
-
 <div>
+  <div class="loader-container" *ngIf="loaderService.isLoading | async">
+    <div class="progress" style="height: 8px;">
+      <div class="progress-bar progress-bar-animated progress-bar-striped bg-info" role="progressbar"
+          style="width: 100%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+  </div>
   <router-outlet></router-outlet>
 </div>

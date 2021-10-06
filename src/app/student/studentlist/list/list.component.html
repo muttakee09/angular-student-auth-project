@@ -1,0 +1,39 @@
+<div class="table-responsive">
+  <table class="table table-striped table-bordered">
+    <tr>
+      <th>Image</th>
+      <th>Student Name
+        <button class="btn ml-0" (click)="sortStudents.emit()">⇓⇑</button>
+      </th>
+      <th>Age</th>
+      <th>Gender</th>
+      <th>Blood Group</th>
+      <th></th>
+    </tr>
+  <tr *ngFor="let item of students$ | async ; trackBy: trackByID">
+      <td>
+        <img *ngIf="item.Image" src="https://localhost:44318/Photos/{{item.Image}}"
+          alt="{{item.Image}}" width=30 height=40/>
+      </td>
+      <td>
+          {{item.StudentName}}
+      </td>
+      <td>
+          {{item.Age}}
+      </td>
+      <td>
+          {{item.Gender === 0 ? 'Male' : 'Female'}}
+      </td>
+      <td>
+          {{item.BloodGroup | bloodType}}
+      </td>
+      <td>
+        <div>
+          <button *appHighlighter="true" class='btn btn-success' style="margin-right: 10px;" (click)=toUpdatePage.emit(item)>Update</button>
+          <button class='btn btn-info' style="margin-right: 10px;" (click)=toDetailPage.emit(item)>Details</button>
+          <button *appHighlighter="true" class='btn btn-danger' (click)=toDeletePage.emit(item)> Delete</button>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>

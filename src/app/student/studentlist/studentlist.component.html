@@ -16,43 +16,8 @@
       <button class="btn btn-outline-danger" (click)='this.logOut()'>Sign out</button>
     </div>
   </div>
-
-  <table class="table table-striped table-bordered">
-      <tr>
-          <th>Image</th>
-          <th>Student Name
-            <button class="btn ml-0" (click)="sortStudents()">⇓⇑</button>
-          </th>
-          <th>Age</th>
-          <th>Gender</th>
-          <th>Blood Group</th>
-          <th></th>
-      </tr>
-
-      <tr *ngFor="let item of students$ | async">
-          <td>
-              <img *ngIf="item.Image" src="https://localhost:44318/Photos/{{item.Image}}"
-               alt="{{item.Image}}" width=30 height=40/>
-          </td>
-          <td>
-              {{item.StudentName}}
-          </td>
-          <td>
-              {{item.Age}}
-          </td>
-          <td>
-              {{item.Gender === 0 ? 'Male' : 'Female'}}
-          </td>
-          <td>
-              {{item.BloodGroup | bloodType}}
-          </td>
-          <td>
-            <div>
-              <button *appHighlighter="true" class='btn btn-success' style="margin-right: 10px;" (click)=toUpdatePage(item)>Update</button>
-              <button class='btn btn-info' style="margin-right: 10px;" (click)=toDetailPage(item)>Details</button>
-              <button *appHighlighter="true" class='btn btn-danger' (click)=toDeletePage(item)> Delete</button>
-            </div>
-          </td>
-      </tr>
-  </table>
+     <app-list [students$]="students$" (toDetailPage)="toDetailPage($event)" (sortStudents)="sortStudents()"
+               (toUpdatePage)="toUpdatePage($event)" (toDeletePage)="toDeletePage($event)"
+     >
+    </app-list>
 </div>

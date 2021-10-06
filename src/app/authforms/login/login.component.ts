@@ -1,11 +1,7 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-
-interface response {
-  token: string;
-  user: any;
-}
 
 @Component({
   selector: 'app-login',
@@ -13,25 +9,45 @@ interface response {
   styleUrls: ['./login.component.css']
 })
 
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, AfterViewInit {
+  errorMessage : string = "damn damn damn damn";
+  @ViewChild('nameRef')
+  nameElementRef!: ElementRef;
   @Output() changeFlag: EventEmitter<any> = new EventEmitter();
+  profileForm = this.formBuilder.group({
+    username: ['', Validators.required],
+    password: ['', [Validators.required, Validators.minLength(8)]]
+  })
 
-  username: string = "";
-  password: string = "";
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
   }
+
+  ngAfterViewInit():void {
+    this.nameElementRef.nativeElement.focus();
+  }
+
+  get username() { return this.profileForm.get('username'); }
+
+  get password() { return this.profileForm.get('password'); }
 
   toSignUp(): void {
     this.changeFlag.emit(1);
   }
 
   onSubmit(): void {
-    const formdata = new FormData();
-    formdata.append("username", this.username);
-    formdata.append("password", this.password);
-    this.authService.login(formdata)
+    // const formdata = new FormData();
+    // formdata.append("username", this.username);
+    // formdata.append("password", this.password);
+    let formValue = this.profileForm.value;
+    var formData = new FormData();
+
+    Object.keys(formValue).map(key => {
+        formData.append(key, formValue[key]);
+    })
+
+    this.authService.login(formData)
         .subscribe(response => {
           if (response) {
             console.log(response);
