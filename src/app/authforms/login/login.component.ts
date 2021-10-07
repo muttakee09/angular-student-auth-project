@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -10,7 +10,8 @@ import { AuthService } from '../../services/auth.service';
 })
 
 export class LoginComponent implements OnInit, AfterViewInit {
-  errorMessage : string = "damn damn damn damn";
+  errorMessage : string = "";
+  returnUrl: string = "";
   @ViewChild('nameRef')
   nameElementRef!: ElementRef;
   @Output() changeFlag: EventEmitter<any> = new EventEmitter();
@@ -19,9 +20,11 @@ export class LoginComponent implements OnInit, AfterViewInit {
     password: ['', [Validators.required, Validators.minLength(8)]]
   })
 
-  constructor(private authService: AuthService, private router: Router, private formBuilder: FormBuilder) { }
+  constructor(private authService: AuthService, private router: Router,
+    private formBuilder: FormBuilder, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   ngAfterViewInit():void {
@@ -50,11 +53,10 @@ export class LoginComponent implements OnInit, AfterViewInit {
     this.authService.login(formData)
         .subscribe(response => {
           if (response) {
-            console.log(response);
             localStorage.setItem('token', response.Token);
             localStorage.setItem("user", response.Name);
             localStorage.setItem("role", response.Role);
-            this.router.navigateByUrl('/students');
+            this.router.navigateByUrl(this.returnUrl);
           }
         });
   }

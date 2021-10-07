@@ -12,13 +12,13 @@ export class AuthGuard implements CanActivateChild {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       const url: string = state.url;
-      return this.checkLogin(url);
+      return this.checkLogin(url.substring(1));
   }
 
   checkLogin(url:string): true|UrlTree {
     if (localStorage.getItem('token')) {
       return true;
     }
-    return this.router.parseUrl('/login');
+    return this.router.parseUrl(`/login?returnUrl=${url}`);
   }
 }
