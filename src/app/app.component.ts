@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { delay } from 'rxjs/operators';
 import { LoaderService } from './services/loader.service';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

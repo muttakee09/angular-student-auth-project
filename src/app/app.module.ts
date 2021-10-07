@@ -27,6 +27,9 @@ import { HighlighterDirective } from './helpers/highlighter.directive';
 import { HttpErrorInterceptor } from './helpers/http-error.interceptor';
 import { LoaderInterceptor } from './helpers/loader.interceptor';
 import { ListComponent } from './student/studentlist/list/list.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatButtonModule} from '@angular/material/button';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
@@ -57,7 +60,10 @@ import { ListComponent } from './student/studentlist/list/list.component';
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
-    AdminModule
+    AdminModule,
+    BrowserAnimationsModule,
+    MatProgressBarModule,
+    MatButtonModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

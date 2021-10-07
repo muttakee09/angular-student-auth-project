@@ -1,10 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, map, tap } from 'rxjs/operators';
-import { StudentView } from '../utillity/StudentView';
-import { Student } from '../utillity/Student';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { baseUrl } from '../utillity/constant';
-import { Observable, of } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 interface LoginResponse {
   token: string;

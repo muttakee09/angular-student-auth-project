@@ -29,9 +29,9 @@
       </td>
       <td>
         <div>
-          <button *appHighlighter="true" class='btn btn-success' style="margin-right: 10px;" (click)=toUpdatePage.emit(item)>Update</button>
-          <button class='btn btn-info' style="margin-right: 10px;" (click)=toDetailPage.emit(item)>Details</button>
-          <button *appHighlighter="true" class='btn btn-danger' (click)=toDeletePage.emit(item)> Delete</button>
+          <button mat-raised-button color="primary" *appHighlighter="true" style="margin-right: 10px;" (click)=toUpdatePage.emit(item)>Update</button>
+          <button mat-raised-button color="accent" style="margin-right: 10px;" (click)=toDetailPage.emit(item)>Details</button>
+          <button mat-raised-button color="warn" *appHighlighter="true" (click)=toDeletePage.emit(item)> Delete</button>
         </div>
       </td>
     </tr>

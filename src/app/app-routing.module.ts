@@ -20,7 +20,8 @@ const routes: Routes = [
     component: MainLayoutComponent,
     canActivateChild: [AuthGuard],
     children: [
-    { path: 'students', component: StudentviewComponent},
+      { path: '', component: StudentviewComponent},
+      { path: 'students', component: StudentviewComponent},
     {
       path: 'admins',
       loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
@@ -29,7 +30,6 @@ const routes: Routes = [
   ]},
   { path: 'unauthorized', component: UnauthorizedComponent},
   { path: '**', component: PageNotFoundComponent},
-  { path: '', redirectTo: localStorage.getItem('token') ? 'students' : 'login', pathMatch: 'full' },
 ];
 
 
